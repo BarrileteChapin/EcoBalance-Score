@@ -142,7 +142,7 @@ EcoBalance-Score/
 
 ## 📊 Data Sources
 
-The system integrates with real APIs from:
+The system in the future could integrate with real APIs from:
 
 - **Singapore**: National Parks Board (NPARKS) + NEA
 - **New York City**: NYC Open Data + GHG Emissions Inventory
@@ -153,6 +153,8 @@ The system integrates with real APIs from:
 - **Madrid**: Sentinel-2 + WAQI Network
 - **Amsterdam**: HUGSI + Climate TRACE
 - **Rome**: European Settlement Map + Urban Emission Inventories
+
+Note: current version is only a demo
 
 ## 🌟 Features
 
