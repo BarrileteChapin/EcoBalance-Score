@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBalance Score System - SDG 13 Urban Sustainability</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🌱 EcoBalance Score</h2>
+                <span class="nav-subtitle">SDG 13 Urban Sustainability</span>
+            </div>
+            <ul class="nav-links">
+                <li><button class="nav-btn active" data-view="dashboard">Dashboard</button></li>
+                <li><button class="nav-btn" data-view="compare">Compare Cities</button></li>
+                <li><button class="nav-btn" data-view="methodology">Methodology</button></li>
+                <li><button class="nav-btn" data-view="data-sources">Data Sources</button></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="https://github.com/BarrileteChapin/EcoBalance-Score" target="_blank" class="github-btn" title="Contribute on GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>Contribute</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Dashboard View -->
+        <section id="dashboard-view" class="view active">
+            <div class="container">
+                <div class="hero-section">
+                    <h1>Urban Environmental Health Dashboard</h1>
+                    <p class="hero-description">Monitor and compare cities' EcoBalance scores - measuring carbon absorption vs emissions production</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon">🌍</div>
+                        <div class="metric-content">
+                            <h3 id="total-cities">3</h3>
+                            <p>Cities Monitored</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🏆</div>
+                        <div class="metric-content">
+                            <h3 id="top-performer">Singapore</h3>
+                            <p>Top Performer</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🌱</div>
+                        <div class="metric-content">
+                            <h3 id="avg-score">1.52</h3>
+                            <p>Average EcoBalance</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📊</div>
+                        <div class="metric-content">
+                            <h3 id="sdg-alignment">85%</h3>
+                            <p>Avg SDG 13 Alignment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cities-grid" id="cities-grid">
+                    <!-- City cards will be dynamically generated here -->
+                </div>
+
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h3>EcoBalance Scores Comparison</h3>
+                        <canvas id="eco-balance-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Emissions vs Carbon Sequestration</h3>
+                        <canvas id="emissions-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- City Detail Modal -->
+        <div id="city-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-city-name">City Details</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-content">
+                    <!-- City details will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Compare Cities View -->
+        <section id="compare-view" class="view">
+            <div class="container">
+                <h1>Compare Cities</h1>
+                <p>Select two cities to compare their environmental performance side by side</p>
+                
+                <div class="comparison-controls">
+                    <select id="city1-select" class="form-control">
+                        <option value="">Select first city</option>
+                    </select>
+                    <div class="vs-divider">VS</div>
+                    <select id="city2-select" class="form-control">
+                        <option value="">Select second city</option>
+                    </select>
+                </div>
+
+                <div id="comparison-result" class="comparison-grid hidden">
+                    <!-- Comparison results will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology View -->
+        <section id="methodology-view" class="view">
+            <div class="container">
+                <h1>EcoBalance Score Methodology</h1>
+                <p>Understanding how we calculate urban environmental health scores</p>
+                
+                <div class="methodology-grid">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>📐 Calculation Formula</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="formula-box">
+                                <strong>EcoBalance Score = Carbon Sequestration Rate ÷ Emissions Per Capita</strong>
+                            </div>
+                            <p>Where:</p>
+                            <ul>
+                                <li><strong>Carbon Sequestration Rate:</strong> tonnes CO₂/year per km² of green space</li>
+                                <li><strong>Emissions Per Capita:</strong> tonnes CO₂ per person per year</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>🏅 Score Interpretation</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="score-ranges">
+                                <div class="score-range excellent">
+                                    <span class="range">1.5+</span>
+                                    <span class="label">Excellent - Strong carbon positive</span>
+                                </div>
+                                <div class="score-range good">
+                                    <span class="range">1.0-1.5</span>
+                                    <span class="label">Good - Positive environmental impact</span>
+                                </div>
+                                <div class="score-range fair">
+                                    <span class="range">0.5-1.0</span>
+                                    <span class="label">Fair - Moderate balance</span>
+                                </div>
+                                <div class="score-range poor">
+                                    <span class="range">0.0-0.5</span>
+                                    <span class="label">Poor - High emissions, low absorption</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>🎯 SDG 13 Alignment</h3>
+                        </div>
+                        <div class="card__body">
+                            <p>Our system directly supports UN Sustainable Development Goal 13: Climate Action</p>
+                            <ul>
+                                <li>Target 13.2: Integrate climate measures into policies</li>
+                                <li>Target 13.3: Improve climate change mitigation</li>
+                                <li>Indicator 13.2.2: Total greenhouse gas emissions per year</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="methodology-content" class="methodology-dynamic">
+                    <!-- Dynamic methodology content will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Sources View -->
+        <section id="data-sources-view" class="view">
+            <div class="container">
+                <h1>Data Sources & API Integration</h1>
+                <p>Transparent methodology using open data sources and free APIs</p>
+
+                <div class="data-sources-grid">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>🔥 Emissions Data Sources</h3>
+                        </div>
+                        <div class="card__body">
+                            <ul class="api-list">
+                                <li>
+                                    <strong>Climate TRACE API</strong>
+                                    <span class="api-url">climatetrace.org/api</span>
+                                    <p>Real-time emissions tracking for cities and sectors</p>
+                                </li>
+                                <li>
+                                    <strong>Municipal GHG Inventories</strong>
+                                    <span class="api-url">C40 Cities Database</span>
+                                    <p>Official city-reported greenhouse gas inventories</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>🌳 Vegetation Data Sources</h3>
+                        </div>
+                        <div class="card__body">
+                            <ul class="api-list">
+                                <li>
+                                    <strong>HUGSI Satellite Data</strong>
+                                    <span class="api-url">hugsi.green/api</span>
+                                    <p>Satellite-derived urban green space metrics</p>
+                                </li>
+                                <li>
+                                    <strong>i-Tree Assessments</strong>
+                                    <span class="api-url">itreetools.org</span>
+                                    <p>Urban forest carbon sequestration calculations</p>
+                                </li>
+                                <li>
+                                    <strong>OpenStreetMap</strong>
+                                    <span class="api-url">overpass-api.de</span>
+                                    <p>Open source geographic data for parks and trees</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="data-sources-list" class="data-sources-container">
+                    <!-- Dynamic data sources will be populated here -->
+                </div>
+
+                <div class="api-demo-section">
+                    <h2>Live API Integration Demo</h2>
+                    <button id="fetch-data-btn" class="btn btn--primary">Simulate API Data Fetch</button>
+                    <div id="api-response" class="api-response hidden">
+                        <h3>Sample API Response (JSON):</h3>
+                        <pre id="api-json"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 EcoBalance Score System | Aligned with UN SDG 13: Climate Action</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+{
+    "project": "EcoBalance Score System",
+    "version": "2.0",
+    "last_updated": "2025-08-12",
+    "cities": [
+        {
+            "name": "Singapore",
+            "country": "Singapore",
+            "green_space_data": {
+                "source": "National Parks Board (NPARKS) / Data.gov.sg",
+                "description": "Urban green space and vegetation data from NPARKS and Singapore's open data portal with 5000+ datasets",
+                "api_url": "https://data.gov.sg/datasets?agencies=National+Parks+Board+%28NPARKS%29",
+                "authentication": "API key registration required - waitlist available",
+                "data_type": "urban vegetation and green space coverage",
+                "update_frequency": "Regular updates from 65+ government agencies"
+            },
+            "emissions_data": {
+                "source": "Singapore National Environment Agency (NEA) / Climatiq",
+                "description": "Greenhouse gas emissions by sector including HFC emissions from refrigeration",
+                "api_url": "https://data.gov.sg",
+                "secondary_source": "https://www.climatiq.io/data/region/sg",
+                "authentication": "Public access with some APIs needing key",
+                "data_type": "emissions and air quality data"
+            }
+        },
+        {
+            "name": "New York City",
+            "country": "USA",
+            "green_space_data": {
+                "source": "NYC Open Data - Parks Properties",
+                "description": "Public parks, community gardens, playing fields, and green spaces including flagship parks and nature areas",
+                "api_url": "https://data.cityofnewyork.us/Recreation/Parks-Properties/enfh-gkve",
+                "data_type": "urban green spaces and parks inventory",
+                "categories_included": ["Flagship Park", "Nature Area", "Community Park", "Neighborhood Park", "Triangle/Plaza", "Historic House Park"]
+            },
+            "emissions_data": {
+                "source": "NYC Greenhouse Gas Emissions Inventory",
+                "description": "Annual city-level GHG emissions inventory measuring emission sources and tracking progress",
+                "api_url": "https://data.cityofnewyork.us/Environment/NYC-Greenhouse-Gas-Emissions-Inventory/wq7q-htne",
+                "data_type": "city emissions inventory",
+                "last_updated": "2024-11-20"
+            }
+        },
+        {
+            "name": "London",
+            "country": "United Kingdom",
+            "green_space_data": {
+                "source": "Ordnance Survey Open Greenspace Dataset",
+                "description": "Britain's most comprehensive open dataset of greenspace including parks, playing fields, sports facilities, and allotments",
+                "api_url": "https://www.ordnancesurvey.co.uk/products/os-open-greenspace",
+                "data_type": "public green spaces with access points",
+                "update_frequency": "Every six months (April and October)",
+                "coverage": "Great Britain",
+                "authentication": "Free for everyone"
+            },
+            "emissions_data": {
+                "source": "London Air Quality Network API",
+                "description": "Live and historical air quality and emissions data for London with structured data feeds",
+                "api_url": "https://www.londonair.org.uk/Londonair/API/",
+                "data_type": "real-time air quality and emissions",
+                "formats": ["XML", "JSON"],
+                "features": ["Air quality indexes", "Objectives tracking", "Live database validation"]
+            }
+        },
+        {
+            "name": "Paris",
+            "country": "France",
+            "green_space_data": {
+                "source": "Paris Open Data",
+                "description": "Dataset geolocating city trees including alignment trees and public green spaces",
+                "api_url": "https://opendata.paris.fr/explore/dataset/les-arbres/api/",
+                "data_update": "Not real-time, updated with delays",
+                "data_type": "vegetation coverage",
+                "limitations": "Does not include all private trees or forest patches"
+            },
+            "emissions_data": {
+                "source": "Data Portal for Cities API",
+                "description": "City greenhouse gas inventory emission data",
+                "api_url": "https://dataportalforcities.org/api",
+                "data_type": "emission inventories"
+            }
+        },
+        {
+            "name": "Barcelona",
+            "country": "Spain",
+            "green_space_data": {
+                "source": "Sentinel-2 and satellite data",
+                "description": "Urban green space indicators and albedo from satellite imaging",
+                "api_url": "https://spaceclimateobservatory.org/sat4bdnb",
+                "data_type": "vegetation coverage and albedo"
+            },
+            "emissions_data": {
+                "source": "WAQI Air Quality Platform",
+                "description": "Real-time air quality and pollution data from Barcelona Poblenou station",
+                "api_url": "https://api.waqi.info/feed/@10534/?token=__YOUR_TOKEN__",
+                "data_type": "air pollution, emission proxies",
+                "authentication": "API token required"
+            }
+        },
+        {
+            "name": "Berlin",
+            "country": "Germany",
+            "green_space_data": {
+                "source": "HUGSI + European Settlement Map",
+                "description": "Satellite-based urban green space analysis with 10m resolution mapping",
+                "data_type": "urban green space coverage",
+                "resolution": "10m"
+            },
+            "emissions_data": {
+                "source": "European urban emission databases + Climate TRACE",
+                "description": "City-level emissions data from European databases",
+                "data_type": "urban emissions inventory"
+            }
+        },
+        {
+            "name": "Madrid",
+            "country": "Spain", 
+            "green_space_data": {
+                "source": "Sentinel-2 vegetation indices + HUGSI",
+                "description": "Satellite-derived vegetation coverage analysis",
+                "data_type": "vegetation indices and green space mapping"
+            },
+            "emissions_data": {
+                "source": "WAQI air quality network + Climate TRACE",
+                "description": "Air quality monitoring and emissions data",
+                "data_type": "air quality and emissions"
+            }
+        },
+        {
+            "name": "Amsterdam",
+            "country": "Netherlands",
+            "green_space_data": {
+                "source": "HUGSI global coverage + OpenStreetMap",
+                "description": "Satellite-based urban green space analysis",
+                "data_type": "urban green coverage"
+            },
+            "emissions_data": {
+                "source": "Climate TRACE city data + European databases",
+                "description": "City-level emissions tracking",
+                "data_type": "urban emissions"
+            }
+        },
+        {
+            "name": "Rome",
+            "country": "Italy",
+            "green_space_data": {
+                "source": "European Settlement Map + Sentinel-2",
+                "description": "European green space mapping with satellite data",
+                "data_type": "green space coverage",
+                "resolution": "10m"
+            },
+            "emissions_data": {
+                "source": "Urban emission inventories + Climate TRACE",
+                "description": "Municipal greenhouse gas inventories",
+                "data_type": "city emissions data"
+            }
+        }
+    ],
+    "additional_data_sources": {
+        "global_apis": [
+            {
+                "name": "HUGSI",
+                "description": "Satellite-based urban green space analysis for 60+ countries",
+                "coverage": "Global",
+                "data_type": "urban green space mapping"
+            },
+            {
+                "name": "Climate TRACE API",
+                "description": "Global emissions data with city-level breakdowns",
+                "coverage": "Global", 
+                "data_type": "real-time emissions data"
+            },
+            {
+                "name": "i-Tree Suite",
+                "description": "Carbon storage/sequestration calculations",
+                "coverage": "Global",
+                "data_type": "carbon sequestration rates"
+            },
+            {
+                "name": "Data Portal for Cities",
+                "description": "59,810 cities with GHG inventory data",
+                "coverage": "Global",
+                "data_type": "city emissions inventories"
+            }
+        ]
+    },
+    "data_quality_assessment": {
+        "singapore": {
+            "strength": "5000+ datasets from 65+ agencies, comprehensive government data",
+            "limitation": "API key waitlist required for higher rate limits",
+            "data_freshness": "Regular updates, some real-time APIs available"
+        },
+        "nyc": {
+            "strength": "Comprehensive parks inventory with detailed categorization",
+            "limitation": "Annual emissions inventory updates only",
+            "data_freshness": "Last updated November 2024"
+        },
+        "london": {
+            "strength": "Most comprehensive UK green space dataset, real-time air quality",
+            "limitation": "Six-month update cycle for green space data",
+            "data_freshness": "Real-time air quality, biannual green space updates"
+        }
+    },
+    "methodology": {
+        "EcoBalance_Score": "Carbon Sequestration Rate divided by Emissions Per Capita",
+        "score_scale": {
+            "0.0-0.5": "Poor (High emissions, low absorption)",
+            "0.5-1.0": "Fair (Moderate balance)",
+            "1.0-1.5": "Good (Positive environmental impact)",
+            "1.5+": "Excellent (Strong carbon positive)"
+        },
+        "carbon_calculation": "Based on i-Tree methodology: 0.5-1.07 Mg C ha⁻¹ yr⁻¹"
+    }
+}
