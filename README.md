@@ -10,14 +10,6 @@
 
 The **EcoBalance Score System** is an innovative urban climate assessment tool that answers this critical question by measuring whether cities are "carbon positive" or "carbon negative" in real-time.
 
-## 🎥 Demo Video
-
-Watch the EcoBalance Score System in action:
-
-https://github.com/user-attachments/assets/deepInvent.mp4
-
-*This video demonstrates the key features of the EcoBalance Score System, including the dashboard, city comparisons, and data visualization capabilities.*
-
 ## 🔬 How It Works
 
 We combine two key metrics:
